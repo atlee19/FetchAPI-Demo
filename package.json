@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/atlee19/FetchAPI-Demo/issues"
   },
-  "homepage": "https://github.com/atlee19/FetchAPI-Demo#readme"
+  "homepage": "https://github.com/atlee19/FetchAPI-Demo#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
