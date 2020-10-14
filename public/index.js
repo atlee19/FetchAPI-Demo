@@ -8,21 +8,44 @@ const Load = {
         response.then(res => res.json())
         .then(data => {
             const user = data.data 
-            console.log(user)
+            const userCard = document.getElementById("user_info")
 
             //set profile image
-            document.getElementById("avatar")
-            .src = user.avatar
+            userCard.innerHTML += `<img src="${user.avatar}"></img>`
 
-            //set fullname
-            document.getElementById("full_name")
-            .innerHTML = user.first_name + " " + user.last_name
+            //set full name
+            userCard.innerHTML += `<h1>${user.first_name}</h1>` 
 
             //set email
-            document.getElementById("email_address")
-            .innerHTML = user.email
+            userCard.innerHTML += `<p>${user.email}</p>`
         })
+        .catch(error => console.log(error))
+    },
+
+
+    ListOfUsers : function(){
+        const response = Data.getListOfUsers()
+        response.then(res => res.json())
+        .then(data => {
+            const list = data.data
+            list.map(user => {
+                const userCard = document.getElementById("user_info")
+
+                //load profile image 
+                userCard.innerHTML += `<img src="${user.avatar}"></img>`
+                
+                //load full name
+                userCard.innerHTML += `<h1>${user.first_name}</h1>`            
+        
+                //load email
+                userCard.innerHTML += `<p>${user.email}</p>`
+            })
+        })
+        .catch(error => console.log(error))
     }
+
 }
 
-Load.SingleUserData()
+
+Load.ListOfUsers() 
+//Load.SingleUserData()
